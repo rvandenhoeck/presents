@@ -1,0 +1,41 @@
+body {
+  background: #111;
+  color: red;
+  font-family: monospace, sans-serif;
+}
+
+main {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	min-height: 100vh;
+	gap: 8px;
+}
+
+button {
+	width: 1.2em;
+  height: 1.2em;
+	font-size: 100px;
+	background-color: red;
+	color: black;
+	cursor: pointer;
+}
+
+img {
+	display: none;
+	width: 400px;
+	margin: 0 auto;
+	max-width: 100%;
+}
+
+html.is-won {
+	span,
+	button {
+		display: none;
+	}
+
+	img {
+		display: block;
+	}
+}

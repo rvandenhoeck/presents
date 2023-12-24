@@ -1,41 +1,7 @@
-@font-face {
-	font-family: 'Christmas';
-	font-weight: normal;
-	font-style: normal;
-	font-display: block;
-	src: url(../assets/font-xmas.woff2) format('woff2');
-}
-
-:root {
-	--cr-black: #333;
-	--cr-offwhite: #dedede;
-	--cr-red: #C30f16;
-	--cr-green: #00a53c;
-	--cr-green-dark: #034f20;
-}
-
 body {
   background: #111;
-  color: var(--cr-red);
+  color: red;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-}
-
-h1,h2,h3,h4,h5,h6 {
-	font: 50px/1.1 'Christmas', serif;
-	letter-spacing: .05em;
-	margin: 0;
-}
-
-h4,h4,h6 {
-	font-size: 30px;
-}
-
-
-#main {
-	margin: 40px auto;
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
 }
 
 #message,
@@ -67,17 +33,18 @@ h4,h4,h6 {
 }
 
 .board {
-	width: 500px;
-	display: grid;
-	grid-template-rows: repeat(6, 1fr);
-	grid-gap: 5px;
-	padding: 10px;
-	box-sizing: border-box;
+    width: 300px;
+    height: 380px;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 5px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .guess {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 5px;
 }
 
@@ -86,7 +53,7 @@ h4,h4,h6 {
 }
 
 .tile {
-  border: 2px solid var(--cr-green);
+  border: 2px solid #3a3a3c;
   width: 100%;
   display: inline-flex;
   justify-content: center;
@@ -129,8 +96,8 @@ h4,h4,h6 {
   border-radius: 4px;
   cursor: pointer;
   user-select: none;
-  background-color: var(--cr-offwhite);
-  color: var(--cr-green);
+  background-color: #34b634;
+  color: red;
   flex: 1;
   display: flex;
   justify-content: center;
@@ -139,35 +106,9 @@ h4,h4,h6 {
   -webkit-tap-highlight-color: rgba(0,0,0,0.3);
 }
 
-#newGameButton {
-	outline: none;
-	border: none;
-	font-weight: bold;
-	padding: 0 4px;
-	margin: 0 6px 0 0;
-	height: 50px;
-	border-radius: 4px;
-	cursor: pointer;
-	user-select: none;
-	background-color: var(--cr-offwhite);
-	color: var(--cr-black);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-transform: uppercase;
-}
-
 .message {
   width: 100%;
   position: absolute;
-	color: var(--cr-green);
-  background: rgba(0,0,0,0.7);
-	padding: 30px;
-	width: 300px;
-	height: 200px;
-	display: flex;
-  align-items: center;
-  justify-content: center;
   
   will-change: opacity, visibility;
     
@@ -184,14 +125,23 @@ h4,h4,h6 {
   }
   
   .text {
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
+
+    color: red;
+    background: rgba(0,0,0,0.7);
     letter-spacing: 0.2rem;
   }
 }
 
 .correct {
-  background-color: var(--cr-green);
-	color: var(--cr-offwhite);
+  background-color: #34b634;
 }
 
 .oop {
@@ -199,7 +149,7 @@ h4,h4,h6 {
 }
 
 .wrong {
-  background-color: var(--cr-black);
+  background-color: #333;
 }
 
 #bmac {
