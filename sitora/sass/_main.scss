@@ -16,7 +16,7 @@
 
 body {
   background: #111;
-  color: var(--cr-red);
+  color: var(--cr-green);
   font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -87,6 +87,7 @@ h4,h4,h6 {
 
 .tile {
   border: 2px solid var(--cr-green);
+	border-radius: 4px;
   width: 100%;
   display: inline-flex;
   justify-content: center;
