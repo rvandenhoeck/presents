@@ -51,7 +51,6 @@ function initGame(e) {
 						youWin.play();
             alert(`Congrats! You've earned $400 to Jerry's. Use E-Gift Card Number: KJJKRFPP213G`);
         } else if(maxGuesses < 1) {
-            youLose.play();
 						alert("Fuck you! You fucking suck!");
             randomWord();
         }
