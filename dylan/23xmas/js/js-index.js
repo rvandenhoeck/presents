@@ -39,6 +39,7 @@ function initGame(e) {
         } else {
             maxGuesses--;
             incorrectLetters.push(` ${key}`);
+						youLose.play();
         }
         guessLeft.innerText = maxGuesses;
         wrongLetter.innerText = incorrectLetters;
