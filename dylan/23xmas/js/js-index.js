@@ -5,7 +5,8 @@ guessLeft = document.querySelector(".guess-left span"),
 wrongLetter = document.querySelector(".wrong-letter span"),
 resetBtn = document.querySelector(".reset-btn"),
 typingInput = document.querySelector(".typing-input");
-const audio = new Audio('../media/are-you-dumb.mp3');
+const youLose = new Audio('../media/are-you-dumb.mp3');
+const youWin = new Audio('../media/amazing.mp3');
 
 let word, maxGuesses, incorrectLetters = [], correctLetters = [];
 
@@ -46,10 +47,11 @@ function initGame(e) {
 
     setTimeout(() => {
         if(correctLetters.length === word.length) {
+						youWin.play();
             alert(`Congrats! You've earned $400 to Jerry's. Use E-Gift Card Number: KJJKRFPP213G`);
         } else if(maxGuesses < 1) {
-            alert("Fuck you! You fucking suck!");
-						audio.play();
+            youLose.play();
+						alert("Fuck you! You fucking suck!");
             randomWord();
         }
     }, 100);
