@@ -5,8 +5,8 @@ guessLeft = document.querySelector(".guess-left span"),
 wrongLetter = document.querySelector(".wrong-letter span"),
 resetBtn = document.querySelector(".reset-btn"),
 typingInput = document.querySelector(".typing-input");
-const youLose = new Audio('../media/are-you-dumb.mp3');
-const youWin = new Audio('../media/amazing.mp3');
+const youLose = new Audio('./media/are-you-dumb.mp3');
+const youWin = new Audio('./media/amazing.mp3');
 
 let word, maxGuesses, incorrectLetters = [], correctLetters = [];
 
