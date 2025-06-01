@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+</head>
+<body>
+
+    <img class="logo" src="logo-red.svg" alt="Jerry" style="width: 100%; height: auto;">
+    <img class="jerry" src="jerry.png" alt="Jerry" style="width: 100%; height: auto;">
+    <audio controls src="audio.mp3"></audio>
+
+    <p class="gift-card">4CZVKNCHSA06</p>
+
+    
+</body>
+
+<style>
+
+    body {
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        height: 100vh;
+    }
+
+    img {
+        max-width: Min(100%, 600px);
+        object-fit: contain;
+    }
+
+    .jerry {
+        max-width: Min(100%, 600px);
+        height: 50vh;
+        object-fit: contain;
+    }
+
+    audio {
+        display: block;
+        height: 50px;
+        width: 100%;
+    }
+
+    .gift-card {
+        display: none;
+        font-size: 2rem;
+        font-family: monospace;
+        background: white;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .gift-card.visible {
+        display: block;
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+
+</style>
+
+<script>
+
+    const audio = document.querySelector('audio');
+    const giftCard = document.querySelector('.gift-card');
+
+    audio.addEventListener('ended', () => {
+        audio.style.display = 'none';
+        giftCard.classList.add('visible');
+    });
+
+
+</script>
+    
+</html>
