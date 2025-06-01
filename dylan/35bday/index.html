@@ -55,6 +55,7 @@
         padding: 1rem 2rem;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        cursor: pointer;
     }
 
     .gift-card.visible {
@@ -74,10 +75,25 @@
 
     const audio = document.querySelector('audio');
     const giftCard = document.querySelector('.gift-card');
+    const originalText = giftCard.textContent;
+
 
     audio.addEventListener('ended', () => {
         audio.style.display = 'none';
         giftCard.classList.add('visible');
+    });
+
+    giftCard.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(originalText);
+            giftCard.textContent = 'Copied!';
+            
+            setTimeout(() => {
+                giftCard.textContent = originalText;
+            }, 5000);
+        } catch (err) {
+            console.error('Failed to copy text:', err);
+        }
     });
 
 
