@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+</head>
+<body>
+
+    <div class="container">
+        <img class="logo" src="logo-red.svg" alt="Logo">
+        
+        <form id="volumeForm" class="form">
+            <label class="checkbox-label">
+                <input type="checkbox" id="volumeCheckbox" required>
+                <span>Turn your volume to the max to unlock your gift</span>
+            </label>
+            <button type="submit" id="submitBtn" class="submit-btn" disabled>Submit</button>
+        </form>
+
+        <div id="loadingBar" class="loading-bar hidden">
+            <div class="progress"></div>
+        </div>
+    </div>
+
+    <div id="screamOverlay" class="scream-overlay hidden">
+        <img id="screamImg" src="scream.jpg" alt="Scream">
+        <audio id="screamAudio" src="scream.mp3"></audio>
+    </div>
+
+</body>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 20px;
+    }
+
+    .logo {
+        max-width: 300px;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .submit-btn {
+        padding: 10px 30px;
+        font-size: 1rem;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+        background-color: #45a049;
+    }
+
+    .submit-btn:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
+
+    .loading-bar {
+        width: 300px;
+        height: 30px;
+        background-color: #e0e0e0;
+        border-radius: 15px;
+        overflow: hidden;
+        margin-top: 20px;
+    }
+
+    .loading-bar.hidden {
+        display: none;
+    }
+
+    .progress {
+        height: 100%;
+        background: linear-gradient(90deg, #4CAF50, #45a049);
+        width: 0%;
+        animation: progressAnimation 4s ease-in-out forwards;
+    }
+
+    @keyframes progressAnimation {
+        0% { width: 0%; }
+        100% { width: 100%; }
+    }
+
+    .scream-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .scream-overlay.hidden {
+        display: none;
+    }
+
+    .scream-overlay img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+</style>
+
+<script>
+
+    const volumeForm = document.getElementById('volumeForm');
+    const volumeCheckbox = document.getElementById('volumeCheckbox');
+    const submitBtn = document.getElementById('submitBtn');
+    const loadingBar = document.getElementById('loadingBar');
+    const screamOverlay = document.getElementById('screamOverlay');
+    const screamAudio = document.getElementById('screamAudio');
+
+    // Enable submit button when checkbox is checked
+    volumeCheckbox.addEventListener('change', () => {
+        submitBtn.disabled = !volumeCheckbox.checked;
+    });
+
+    // Handle form submission
+    volumeForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Hide form and show loading bar
+        volumeForm.style.display = 'none';
+        loadingBar.classList.remove('hidden');
+
+        // After 4 seconds, show scream overlay and play audio
+        setTimeout(() => {
+            loadingBar.classList.add('hidden');
+            screamOverlay.classList.remove('hidden');
+            screamAudio.volume = 1;
+            screamAudio.play();
+        }, 4000);
+    });
+
+</script>
+    
+</html>
